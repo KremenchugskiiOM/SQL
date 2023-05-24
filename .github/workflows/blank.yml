@@ -1,0 +1,26 @@
+select *
+from step_student
+where student_id = 52;
+/*
+select *
+from student
+
+with qr (name, res) as
+(select student_name, count(*)
+from 
+    student
+    join step_student using(student_id)
+where result = 'correct' and student_id = 52
+group by student_name),
+
+qrm (name, res) as
+(select student_name, count(*)
+from 
+    student
+    join step_student using(student_id)
+where result = 'correct'
+group by student_name)
+
+select *
+from qr
+order by name
